@@ -17,7 +17,17 @@
 				return "scissors";
 			}
 		}
-		
+
+		function rockPaperScissorsOnly(){
+			let playerHand = prompt("What do you play?").toLowerCase();
+			if (playerHand !== "rock" ^ playerHand !== "paper" ^ playerHand !== "scissors"){
+			let playerHand = prompt("Use Rock, Paper or Sciccors").toLowerCase();
+				return playerHand;
+			} else {
+				return playerHand;
+			}
+		}
+
 		function playRound(playerSelection, computerSelection){
 			if(playerSelection === computerSelection){
 				return "Tie!";
@@ -31,6 +41,7 @@
 				return "Computer wins!"
 			}
 		}
+
 		function game(){
 			let numberOfGame = 0;
 			let wonGame = 0;
@@ -39,8 +50,7 @@
 			
 			do {
 			numberOfGame++;
-			let playerHand = prompt("What did you play?");
-			let playerSelection = playerHand.toLowerCase();
+			let playerSelection = rockPaperScissorsOnly();
 			let computerSelection = computerPlay();
 			let round = (playRound(playerSelection, computerSelection));
 			if (round === "User wins!"){
@@ -61,7 +71,10 @@
 				console.log("It's a tie!");
 			}
 		}
+		
 		game();
+		
+
 	</script>
 
 </body>
