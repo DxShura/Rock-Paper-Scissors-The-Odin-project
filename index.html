@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function library example</title>
+</head>
+<body>
+
+	<script>
+		function computerPlay(){
+			let computerHand = Math.floor(Math.random() * 3);
+			if (computerHand === 0){
+				return "rock";
+			} else if (computerHand === 1) {
+				return "paper";
+			} else {
+				return "scissors";
+			}
+		}
+		
+		function playRound(playerSelection, computerSelection){
+			if(playerSelection === computerSelection){
+				return "Tie!";
+			} else if(playerSelection === "rock" && computerSelection === "scissors"){
+				return "User wins!";
+			} else if(playerSelection === "scissors" && computerSelection === "paper"){
+				return "User wins!";
+			} else if(playerSelection === "paper" && computerSelection === "rock"){
+				return "User wins!";
+			} else {
+				return "Computer wins!"
+			}
+		}
+		function game(){
+			let numberOfGame = 0;
+			let wonGame = 0;
+			let lostGame = 0;
+			let ties = 0;
+			
+			do {
+			numberOfGame++;
+			let playerHand = prompt("What did you play?");
+			let playerSelection = playerHand.toLowerCase();
+			let computerSelection = computerPlay();
+			let round = (playRound(playerSelection, computerSelection));
+			if (round === "User wins!"){
+				wonGame++;
+			} else if(round === "Computer wins!") {
+				lostGame++;
+			} else {
+				ties++;
+			}
+			console.log(round);
+			} while (numberOfGame < 5)
+			console.log("Computer wins " + lostGame + ". User wins " + wonGame + ". Ties " + ties);
+			if(wonGame > lostGame){
+				console.log("User wins with " + wonGame + " wins!"); 
+			} else if (lostGame > wonGame){
+				console.log("Computer wins with " + lostGame + " wins!"); 
+			} else {
+				console.log("It's a tie!");
+			}
+		}
+		game();
+	</script>
+
+</body>
+</html>
