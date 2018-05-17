@@ -42,6 +42,18 @@
 			}
 		}
 
+		function consoleMatch(lostGame, wonGame, ties){
+			
+			console.log("Computer wins " + lostGame + ". User wins " + wonGame + ". Ties " + ties);
+			if(wonGame > lostGame){
+				console.log("User wins with " + wonGame + " wins!"); 
+			} else if (lostGame > wonGame){
+				console.log("Computer wins with " + lostGame + " wins!"); 
+			} else {
+				console.log("It's a tie!");
+			}
+		}
+
 		function game(){
 			let numberOfGame = 0;
 			let wonGame = 0;
@@ -62,14 +74,7 @@
 			}
 			console.log(round);
 			} while (numberOfGame < 5)
-			console.log("Computer wins " + lostGame + ". User wins " + wonGame + ". Ties " + ties);
-			if(wonGame > lostGame){
-				console.log("User wins with " + wonGame + " wins!"); 
-			} else if (lostGame > wonGame){
-				console.log("Computer wins with " + lostGame + " wins!"); 
-			} else {
-				console.log("It's a tie!");
-			}
+			consoleMatch(lostGame, wonGame, ties);
 		}
 		
 		game();
