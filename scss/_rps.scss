@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family: 'noto Sans', sans-serif;
+    background: $bg;
+    color: $text;
+}
+
+.wrapper{
+    text-align: center;
+    button{
+		background: $bg;
+		border: $text 1px solid;
+		border-radius: 5%;
+		color: $text;
+		margin-right: .5rem;
+		outline: none;
+		padding: .5rem;
+        transition: .2s;
+        font-size: 2rem;
+        i{
+            font-size: 2rem;
+        }
+		&:hover{
+			background: #525151;
+			transition: .2s;
+        }
+    }
+    #containerRPS{
+        width: 90%;
+        margin: 1rem auto 0 auto;
+        border: 1px solid $text;
+    }
+    a{
+        color: $text;
+    }
+}

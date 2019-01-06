@@ -1,140 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Function library example</title>
-  <button class="rock">Rock</button>
-  <button class="paper">Paper</button>
-  <button class="scissors">Scissors</button>
-  <button class="playAgain" style="display: none;">Play again</button>
-  <div id="container"></div>
-  <div id="containerScore"></div>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Pierre-Papier-Ciseaux</title>
 </head>
 <body>
-
-	<script>
-
-		const rock  = document.querySelector('.rock');
-		const paper = document.querySelector('.paper');
-		const scissors = document.querySelector('.scissors');
-		const playAgain = document.querySelector('.playAgain');
-
-		rock.addEventListener('click', function() {
-			playerSelection = 'rock';
-			game();
-		});
-		paper.addEventListener('click', function() {
-			playerSelection = 'paper';
-			game();
-		});
-		scissors.addEventListener('click', function() {
-			playerSelection = 'scissors';
-			game();
-		});
-		playAgain.addEventListener('click', function(){
-			resetGame();
-		})
-		
-		function computerPlay(){
-			let computerHand = Math.floor(Math.random() * 3);
-			if (computerHand === 0){
-				return "rock";
-			} else if (computerHand === 1) {
-				return "paper";
-			} else {
-				return "scissors";
-			}
-		}
-		
-		function playRound(playerSelection, computerSelection){
-			if(playerSelection === computerSelection){
-				return "Tie!";
-			} else if(playerSelection === "rock" && computerSelection === "scissors"){
-				return "User wins!";
-			} else if(playerSelection === "scissors" && computerSelection === "paper"){
-				return "User wins!";
-			} else if(playerSelection === "paper" && computerSelection === "rock"){
-				return "User wins!";
-			} else {
-				return "Computer wins!"
-			}
-		}
-
-		function consoleMatch(playerSelection, computerSelection){
-			const container = document.querySelector('#container');
-			const containerScore = document.querySelector('#containerScore');
-			if(wonGame > lostGame){
-				container.textContent = "User play " + playerSelection + ". Computer play " + computerSelection;
-				containerScore.textContent = "Score => User : " + wonGame + " Computer : " + lostGame;
-			} else if (lostGame > wonGame){
-
-				container.textContent = "User play " + playerSelection + ". Computer play " + computerSelection;
-				containerScore.textContent = "Score => User : " + wonGame + " Computer : " + lostGame;
-			} else {
-				container.textContent = "User play " + playerSelection + ". Computer play " + computerSelection;
-				containerScore.textContent = "Score => User : " + wonGame + " Computer : " + lostGame;
-			}
-		}
-
-		let countRoundFive = 0;
-		function countRound(){
-			countRoundFive++;
-		}
-
-		function resetGame() {
-			container.textContent = "";
-			containerScore.textContent ="";
-			countRoundFive = 0;
-			wonGame = 0;
-			lostGame = 0;
-			rock.removeAttribute('style', 'display: none;');
-			paper.removeAttribute('style', 'display: none;');
-			scissors.removeAttribute('style', 'display: none;');
-			playAgain.setAttribute('style', 'display: none;');
-		}
-
-		function hideButtons() {
-			rock.setAttribute('style', 'display: none;');
-			paper.setAttribute('style', 'display: none;');
-			scissors.setAttribute('style', 'display: none;');
-			playAgain.setAttribute('style', 'display: inline-block;');
-		}
-
-		function countToFive(){
-			if(countRoundFive >= 5){
-				if(wonGame > lostGame){
-					container.textContent = "User wins by " + wonGame + " : " + lostGame;
-					hideButtons();
-				} else if(lostGame > wonGame) {
-					container.textContent = "Computer wins by " + wonGame + " : " + lostGame;
-					hideButtons();
-				} else {
-					container.textContent = "Draw by " + wonGame + " : " + lostGame;
-					hideButtons();
-				}
-			}
-		}
-
-
-		let wonGame = 0;
-		let lostGame = 0;
-		let ties = 0;
-		function game(){
-			let computerSelection = computerPlay();
-			let round = (playRound(playerSelection, computerSelection));
-			if (round === "User wins!"){
-				wonGame++;
-			} else if(round === "Computer wins!") {
-				lostGame++;
-			} else {
-				ties++;
-			}
-			countRound(countRoundFive);
-			consoleMatch(playerSelection, computerSelection);
-			countToFive();
-		}
-
-	</script>
-
+	<div class="wrapper">
+		<h2>Pierre-Papier-Ciseaux</h2>
+		<button class="rock"><i class="fas fa-hand-rock"></i></button>
+		<button class="paper"><i class="fas fa-hand-paper"></i></button>
+		<button class="scissors"><i class="fas fa-hand-scissors"></i></button>
+		<button class="playAgain" style="display: none;">Rejouer <i class="fas fa-redo"></i></button>
+		<div id="containerRPS">
+			<p id="deletePlay">Jouez!!!</p>
+		</div>
+		<div id="containerScore"></div>
+		<p>Créé par <a href="https://github.com/SHergibo/Pierre-Papier-Ciseaux">Sacha Hergibo</a>.</p>
+	</div>
+	<script src="ppc.js"></script>
 </body>
 </html>
